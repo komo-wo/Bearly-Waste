@@ -2,30 +2,28 @@ import { useState, useRef } from "react";
 import * as mobilenet from "@tensorflow-models/mobilenet";
 import "@tensorflow/tfjs";
 import Webcam from "react-webcam";
+import RecycleMap from "../components/recyclemap"; 
 
 export default function Recycle({ onAddXP }) {
-  const [mode, setMode] = useState(null); // null, "upload", or "camera"
+  const [mode, setMode] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
-
   const webcamRef = useRef();
 
-  // Analyze image with MobileNet
+  // Analyze uploaded or captured image
   async function analyzeImage(imgEl) {
     setLoading(true);
     const model = await mobilenet.load();
     const predictions = await model.classify(imgEl);
-    console.log(predictions);
-
     const item = predictions[0].className.toLowerCase();
-    let category = "";
 
+    let category = "";
     if (
       item.includes("bottle") ||
       item.includes("can") ||
-      item.includes("cardboard") ||
-      item.includes("plastic")
+      item.includes("plastic") ||
+      item.includes("cardboard")
     ) {
       category = "♻️ Recyclable! +5 XP";
       onAddXP?.(5);
@@ -45,11 +43,10 @@ export default function Recycle({ onAddXP }) {
     setLoading(false);
   }
 
-  // Upload photo
+  // Handle file upload
   async function handleUpload(e) {
     const file = e.target.files[0];
     if (!file) return;
-
     const url = URL.createObjectURL(file);
     setImagePreview(url);
     setMode("upload");
@@ -59,10 +56,9 @@ export default function Recycle({ onAddXP }) {
     img.onload = () => analyzeImage(img);
   }
 
-  // Capture photo from live camera
+  // Handle camera capture
   async function handleCapture() {
     if (!webcamRef.current) return;
-
     const imageSrc = webcamRef.current.getScreenshot();
     setImagePreview(imageSrc);
 
@@ -72,9 +68,9 @@ export default function Recycle({ onAddXP }) {
   }
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center p-4 text-center">
+    <div className="pt-10 flex flex-col items-center justify-center text-center h-full overflow-y-auto">
       <h2 className="text-2xl font-bold text-emerald-700 mb-4">
-        Identify an Item
+        Start Recycling
       </h2>
 
       {/* Upload Photo */}
@@ -96,7 +92,7 @@ export default function Recycle({ onAddXP }) {
         📸 Open Live Camera
       </button>
 
-      {/* Camera view */}
+      {/* Camera View */}
       {mode === "camera" && (
         <div className="flex flex-col items-center">
           <Webcam
@@ -105,9 +101,7 @@ export default function Recycle({ onAddXP }) {
             screenshotFormat="image/jpeg"
             width={300}
             className="rounded-xl border border-emerald-300 mb-3"
-            videoConstraints={{
-              facingMode: "environment", // use back camera on phones
-            }}
+            videoConstraints={{ facingMode: "environment" }}
           />
           <button
             onClick={handleCapture}
@@ -118,7 +112,7 @@ export default function Recycle({ onAddXP }) {
         </div>
       )}
 
-      {/* Image Preview */}
+      {/* Uploaded Image Preview */}
       {imagePreview && (
         <img
           src={imagePreview}
@@ -127,9 +121,12 @@ export default function Recycle({ onAddXP }) {
         />
       )}
 
-      {/* Results */}
+      {/* Results + Map */}
       {loading && <p className="text-gray-600 mt-3">Analyzing image... ⏳</p>}
       {result && <p className="mt-3 text-lg">{result}</p>}
+
+      {/* Google Map only shows if recyclable item detected */}
+      {result.includes("Recyclable") && <RecycleMap />}
     </div>
   );
 }

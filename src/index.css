@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* === Custom bounce animation === */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce {
+  animation: bounce-slow 2s infinite;
+}
+
+/* === Custom Pixel Game Font === */
+@font-face {
+  font-family: "PixelGame";
+  src: url("./assets/fonts/Pixel Game.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the font to everything */
+body, * {
+  font-family: "PixelGame", sans-serif;
+}
+
