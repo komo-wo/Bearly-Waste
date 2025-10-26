@@ -11,20 +11,24 @@ export default function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-b from-emerald-100 to-emerald-50 flex items-center justify-center">
-        {/* Phone Shell */}
+      {/* 🌄 Background wrapper */}
+      <div
+        className="min-h-screen flex items-center justify-center bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/pixil-frame-0_6.png')",
+        }}
+      >
+        {/* 📱 Phone shell */}
         <div className="relative w-[375px] h-[667px] bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-emerald-200 flex flex-col">
-          {/* Navbar is part of shell */}
           <Navbar />
-
-          {/* Route Pages */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/recycle" element={<Recycle onAddXP={addXP} />} />
-            <Route path="/pet" element={<Pet xp={xp} />} />
+            <Route path="/pet" element={<Pet xp={xp} setXP={setXP} />} />
           </Routes>
         </div>
       </div>
     </Router>
   );
 }
+

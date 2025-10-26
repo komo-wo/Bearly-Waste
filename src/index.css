@@ -16,6 +16,19 @@
   animation: bounce-slow 2s infinite;
 }
 
+/* === Fix purple nav link text === */
+@layer base {
+  a {
+    @apply text-inherit no-underline;
+  }
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    @apply text-inherit;
+  }
+}
+
 /* === Custom Pixel Game Font === */
 @font-face {
   font-family: "PixelGame";
@@ -33,12 +46,5 @@ html, body, #root {
   color: white;
   -webkit-text-stroke: 1px black;
   text-stroke: 1px black;
-
-  /* ✅ Background image for entire app */
-  background-image: url("/pixil-frame-0_6.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
-
 
