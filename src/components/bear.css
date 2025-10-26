@@ -25,9 +25,9 @@ body {
 .wrapper.show-message::after {
   position: absolute;
   content: 'drag the donut and feed the bear';
-  top: 80px;
+  top: 70px;
   font-style: italic;
-  color: #fff;
+  color: #5b5b5b;
   font-size: 1.2em;
 }
 
@@ -317,10 +317,7 @@ body {
   animation-play-state: running;
 }
 
-.grow {
-  animation: forwards spread 0.5s;
-  animation-delay: 1s;
-}
+
 
 @keyframes shrink {
   0% {
@@ -332,7 +329,10 @@ body {
     height: 20;
   }
 }
-
+.grow {
+  animation: forwards spread 0.5s;
+  animation-delay: 1s;
+}
 .sign {
   position: fixed;
   font-family: Arial, Helvetica, sans-serif;
@@ -352,3 +352,4 @@ a {
 a:hover { 
   text-decoration: underline; 
 }
+
