@@ -126,7 +126,11 @@ export default function Recycle({ onAddXP }) {
       {result && <p className="mt-3 text-lg">{result}</p>}
 
       {/* Google Map only shows if recyclable item detected */}
-      {result.includes("Recyclable") && <RecycleMap />}
+      {result.includes("Recyclable") && (
+  <div className="w-full min-h-[400px] flex justify-center">
+    <RecycleMap />
+  </div>
+)}
     </div>
   );
 }
