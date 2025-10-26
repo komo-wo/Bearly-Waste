@@ -9,7 +9,7 @@ export default function Navbar() {
       : "text-gray-500 hover:text-emerald-700";
 
   return (
-    <nav className="w-full bg-white border-b border-emerald-200 py-3 flex justify-around text-sm font-semibold shadow-sm">
+    <nav className="w-full bg-white border-b border-emerald-200 py-3 flex justify-around text-[30px] font-semibold shadow-sm">
       <Link to="/" className={active("/")}>
         Home
       </Link>

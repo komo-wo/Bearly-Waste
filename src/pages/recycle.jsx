@@ -69,12 +69,12 @@ export default function Recycle({ onAddXP }) {
 
   return (
     <div className="pt-10 flex flex-col items-center justify-center text-center h-full overflow-y-auto">
-      <h2 className="text-2xl font-bold text-emerald-700 mb-4">
-        Start Recycling
+      <h2 className="text-[50px] font-bold text-emerald-700 mb-4">
+        Start Recycling!
       </h2>
 
       {/* Upload Photo */}
-      <label className="px-6 py-3 bg-emerald-600 text-white rounded-xl shadow hover:bg-emerald-700 cursor-pointer mb-3">
+      <label className="text-[25px] px-6 py-3 bg-emerald-600 hover:scale-120 transition-transform duration-300 text-white rounded-xl shadow hover:bg-emerald-700 cursor-pointer mb-3">
         📁 Upload Photo
         <input
           type="file"
@@ -87,7 +87,7 @@ export default function Recycle({ onAddXP }) {
       {/* Live Camera */}
       <button
         onClick={() => setMode("camera")}
-        className="px-6 py-3 bg-emerald-100 text-emerald-700 rounded-xl shadow hover:bg-emerald-200 mb-4"
+        className="px-6 py-3 bg-emerald-100 text-emerald-700 hover:scale-120 transition-transform duration-300 rounded-xl shadow hover:bg-emerald-200 mb-4"
       >
         📸 Open Live Camera
       </button>

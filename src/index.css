@@ -24,8 +24,21 @@
   font-style: normal;
 }
 
-/* Apply the font to everything */
-body, * {
+/* === Global styles === */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   font-family: "PixelGame", sans-serif;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  text-stroke: 1px black;
+
+  /* ✅ Background image for entire app */
+  background-image: url("/pixil-frame-0_6.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
