@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Custom bounce animation === */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce {
+  animation: bounce-slow 2s infinite;
+}
+
+/* === Custom Pixel Game Font === */
+@font-face {
+  font-family: "PixelGame";
+  src: url("./assets/fonts/Pixel Game.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* === Global styles === */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "PixelGame", sans-serif;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  text-stroke: 1px black;
+
+  /* ✅ Background image for entire app */
+  background-image: url("/pixil-frame-0_6.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
