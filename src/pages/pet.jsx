@@ -15,13 +15,23 @@ export default function Pet({ xp }) {
         XP: {xp}
       </p>
 
-      <div className="flex justify-around gap-8 mt-4">
+      <div className="flex justify-around mt-4">
         <div className="flex flex-col items-center">
-          <div className="text-4xl">🍩</div>
+          <div className="text-4xl">
+            <img
+            src="/pixil-frame-0_4.png"
+            className="w-[200px] h-[200px] cursor-pointer hover:scale-120 transition-transform duration-300 bounce"
+            />
+          </div>
           <p className="text-sm mt-1 text-white">4 XP</p>
         </div>
         <div className="flex flex-col items-center">
-          <div className="text-4xl">🛏️</div>
+          <div className="text-4xl">
+            <img
+            src="/pixil-frame-0_5.png"
+            className="w-[200px] h-[200px] cursor-pointer hover:scale-120 transition-transform duration-300 bounce"
+            />
+          </div>
           <p className="text-sm mt-1 text-white">2 XP</p>
         </div>
       </div>
